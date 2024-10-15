@@ -6,26 +6,42 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Sander Prii autosalong</h1>
-<div id="car-container"></div>
+<header>
+  <h1>Sander Prii Autosalong</h1>
+</header>
 
-<!-- vorm auto lisamiseks -->
-<h2>Lisa oma auto</h2>
-<form id="add-car-form">
-  <label for="brand">Bränd:</label>
-  <input type="text" id="brand" name="brand" required><br>
+<main>
+  <section id="car-gallery">
+    <h2>Meie Autod</h2>
+    <div id="car-container"></div>
+  </section>
 
-  <label for="model">Mudel:</label>
-  <input type="text" id="model" name="model" required><br>
+  <section id="add-car-section">
+    <h2>Lisa oma auto</h2>
+    <form id="add-car-form">
+      <label for="brand">Bränd:</label>
+      <input type="text" id="brand" name="brand" required><br>
 
-  <label for="year">Aasta:</label>
-  <input type="number" id="year" name="year" required><br>
+      <label for="model">Mudel:</label>
+      <input type="text" id="model" name="model" required><br>
 
-  <label for="price">Hind (€):</label>
-  <input type="number" id="price" name="price" required><br>
+      <label for="year">Aasta:</label>
+      <input type="number" id="year" name="year" required><br>
 
-  <button type="submit">Lisa auto</button>
-</form>
+      <label for="price">Hind (€):</label>
+      <input type="number" id="price" name="price" required><br>
+
+      <label for="image">Pildi URL:</label>
+      <input type="text" id="image" name="image" placeholder="https://..."><br>
+
+      <button type="submit">Lisa auto</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2023 Sander Prii Autosalong</p>
+</footer>
 
 <script src="script.js"></script>
 </body>

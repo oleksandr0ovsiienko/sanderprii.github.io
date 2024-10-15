@@ -1,81 +1,71 @@
-// Primitiivid
-let totalCars = 5; // number
-let companyName = "Autoettevõte OÜ"; // string
-let isActive = true; // boolean
-
-// Spetsiaalsed väärtused
-let specialNumber = NaN;
-let infiniteValue = Infinity;
-let emptyValue = null;
-let notDefined;
-
-
-let carBrands = ["Toyota", "Ford", "BMW", "Audi", "Mercedes"]; // Array
-
-// Klass Car
 class Car {
-    constructor(brand, model, year, price) {
-        this.brand = brand; // string
-        this.model = model; // string
-        this.year = year; // number
-        this.price = price; // number
+    constructor(brand, model, year, price, image) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.price = price;
+        this.image = image || 'default-car.jpg'; // Default image if none provided
     }
 
-    // Auto lisamine kasutaja poolt
     getInfo() {
         return `${this.brand} ${this.model} (${this.year}) - €${this.price}`;
     }
 }
 
-// Funktsioon autode genereerimiseks
+// Sample car images (you can replace these with actual image URLs)
+const sampleImages = {
+    'Toyota': 'https://kong-proxy-intranet.toyota-europe.com/c1-images/resize/ccis/680x680/zip/ee/product-token/a0ea7f5a-107c-4ead-8934-7ef9e3179066/vehicle/ffe6ebe8-7883-4b68-99cf-ad735ab05575/padding/50,50,50,50/image-quality/70/day-exterior-04_040.png',
+    'Ford': 'https://hips.hearstapps.com/hmg-prod/images/2025-ford-explorer-st-110-65ba6d640cbb3.jpg',
+    'BMW': 'https://www.bmw.ee/content/dam/bmw/common/all-models/m-series/m8-coupe/2022/navigation/bmw-8series-coupe-modellfinder.png',
+    'Audi': 'https://mediaservice.audi.com/media/live/50900/fly1400x601n1/4a2a/2023.png?wid=850',
+    'Mercedes': 'https://media.ed.edmunds-media.com/mercedes-benz/s-class/2024/oem/2024_mercedes-benz_s-class_sedan_amg-s-63-e-performance_fq_oem_1_1600.jpg',
+};
+
+let carBrands = ["Toyota", "Ford", "BMW", "Audi", "Mercedes"];
+let carsList = generateCars();
+
 function generateCars() {
     let cars = [];
-    // Tsükkel
     for (let i = 0; i < carBrands.length; i++) {
         let brand = carBrands[i];
-        // Tingimus
         let luxury = (brand === "BMW" || brand === "Audi" || brand === "Mercedes");
-
-        // Spetsiaalse väärtuse kasutamine
         let price = luxury ? 50000 + (i * 1000) : 20000 + (i * 1000);
-        if (price === Infinity) {
-            price = infiniteValue;
-        }
+        let image = sampleImages[brand];
 
-        // Uue auto loomine
         let car = new Car(
             brand,
-            "Mudel " + (i + 1),
+            "Model " + (i + 1),
             2020 + i,
-            price
+            price,
+            image
         );
         cars.push(car);
     }
     return cars;
 }
 
-// Autode nimekirja loomine
-let carsList = generateCars();
-
-// Funktsioon autode kuvamiseks lehel
 function displayCars(cars) {
     let container = document.getElementById('car-container');
-    container.innerHTML = ''; // Tühjendame konteineri enne kuvamist
+    container.innerHTML = '';
 
-    // Tsükkel
     cars.forEach(function(car) {
         let carDiv = document.createElement('div');
         carDiv.className = 'car';
 
-        let carTitle = document.createElement('h2');
+        let carImage = document.createElement('img');
+        carImage.src = car.image;
+        carImage.alt = car.brand + ' ' + car.model;
+
+        let carTitle = document.createElement('h3');
         carTitle.textContent = car.brand + " " + car.model;
 
         let carYear = document.createElement('p');
-        carYear.textContent = "Aasta: " + car.year;
+        carYear.innerHTML = "<strong>Aasta:</strong> " + car.year;
 
         let carPrice = document.createElement('p');
-        carPrice.textContent = "Hind: €" + car.price;
+        carPrice.innerHTML = "<strong>Hind:</strong> €" + car.price;
 
+        carDiv.appendChild(carImage);
         carDiv.appendChild(carTitle);
         carDiv.appendChild(carYear);
         carDiv.appendChild(carPrice);
@@ -83,40 +73,29 @@ function displayCars(cars) {
     });
 }
 
-// Funktsiooni kutsumine autode kuvamiseks
 displayCars(carsList);
 
-// Uue auto lisamise funktsioon
 function addCar(event) {
-    event.preventDefault(); // Vältida vormi vaikimisi submit'i
+    event.preventDefault();
 
-    // Saame vormi väärtused
     let brandInput = document.getElementById('brand').value;
     let modelInput = document.getElementById('model').value;
     let yearInput = parseInt(document.getElementById('year').value);
     let priceInput = parseFloat(document.getElementById('price').value);
+    let imageInput = document.getElementById('image').value;
 
-    // Kontrollime, kas sisestatud andmed on korrektsed
     if (!brandInput || !modelInput || isNaN(yearInput) || isNaN(priceInput)) {
         alert("Palun täitke kõik väljad õigesti.");
         return;
     }
 
-    // Loome uue auto listi
-    let newCar = new Car(brandInput, modelInput, yearInput, priceInput);
+    let newCar = new Car(brandInput, modelInput, yearInput, priceInput, imageInput);
 
-    // Lisame auto nimekirja
     carsList.push(newCar);
 
-    // Kuvame uuendatud autode nimekirja
     displayCars(carsList);
 
-    // Tühjendame vormi väljad
     document.getElementById('add-car-form').reset();
 }
 
-// Lisame vormile kuulaja
-let addCarForm = document.getElementById('add-car-form');
-addCarForm.addEventListener('submit', addCar);
-
-// Kui sa jõudsid siia, siis tead, et ma olen koodist aru saanud.
+document.getElementById('add-car-form').addEventListener('submit', addCar);
