@@ -1,171 +1,171 @@
-/* Existing styles */
+/* Olemasolevad stiilid */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #e0e0e0;
-    margin: 0;
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Peamine fondistiil */
+    background-color: #e0e0e0; /* Taustavärv */
+    margin: 0; /* Eemaldab vaikevahed */
+    color: #333; /* Teksti põhivärv */
 }
 
 header, footer {
-    background-color: #2c3e50;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    position: relative;
+    background-color: #2c3e50; /* Päise ja jaluse taustavärv */
+    color: white; /* Teksti värv */
+    padding: 20px 0; /* Ülemine ja alumine sisuvahe */
+    text-align: center; /* Joondab teksti keskele */
+    position: relative; /* Relatiivne positsioneerimine */
 }
 
 h1 {
-    margin: 0;
+    margin: 0; /* Eemaldab vaikevahed */
 }
 
 main {
-    padding: 20px;
+    padding: 20px; /* Sisemine vahe põhisisule */
 }
 
 #car-gallery h2, #add-car-section h2 {
-    text-align: center;
-    color: #2c3e50;
+    text-align: center; /* Joondab pealkirjad keskele */
+    color: #2c3e50; /* Pealkirjade värv */
 }
 
 #car-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: flex; /* Kasutatakse paindlikku paigutust */
+    flex-wrap: wrap; /* Lubab elementidel murduda uuele reale */
+    justify-content: center; /* Keskendab sisu horisontaalselt */
 }
 
 .car {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    margin: 15px;
-    padding: 15px;
-    width: 250px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
+    background-color: #fff; /* Auto kaardi taustavärv */
+    border: 1px solid #ccc; /* Äärejoon */
+    margin: 15px; /* Välised vahed */
+    padding: 15px; /* Sisemised vahed */
+    width: 250px; /* Laius */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Varjutus */
+    border-radius: 8px; /* Nurgad ümaraks */
+    text-align: center; /* Tekst keskele */
 }
 
 .car img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
+    width: 100%; /* Pildi laiuseks konteineri laiusega võrdne */
+    height: auto; /* Automaatne kõrgus */
+    border-radius: 5px; /* Pildi nurkade ümardamine */
 }
 
 .car h3 {
-    font-size: 1.5em;
-    margin: 10px 0;
+    font-size: 1.5em; /* Pealkirja suurus */
+    margin: 10px 0; /* Ülemine ja alumine vahe */
 }
 
 .car p {
-    margin: 5px 0;
+    margin: 5px 0; /* Ülemine ja alumine vahe lõikudele */
 }
 
 form {
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 400px; /* Vorm ei ületa 400px laiust */
+    margin: 0 auto; /* Keskendab vormi horisontaalselt */
 }
 
 form label {
-    display: block;
-    text-align: left;
-    margin-bottom: 5px;
-    font-weight: bold;
+    display: block; /* Märgend uuel real */
+    text-align: left; /* Joondab teksti vasakule */
+    margin-bottom: 5px; /* Vahe märgendi ja välja vahel */
+    font-weight: bold; /* Rasvane tekst */
 }
 
 form input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
+    width: 100%; /* Välja laiuseks 100% konteinerist */
+    padding: 8px; /* Sisemine vahe */
+    margin-bottom: 15px; /* Vahe väljade vahel */
+    box-sizing: border-box; /* Kasti suurus sisaldab vahed */
 }
 
 form button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #27ae60;
-    color: white;
-    border: none;
-    font-size: 1em;
-    cursor: pointer;
+    display: block; /* Nupp eraldi real */
+    width: 100%; /* Laius 100% */
+    padding: 10px; /* Sisemine vahe */
+    background-color: #27ae60; /* Taustavärv */
+    color: white; /* Teksti värv */
+    border: none; /* Eemaldab äärejoone */
+    font-size: 1em; /* Fondi suurus */
+    cursor: pointer; /* Näitab, et element on klõpsatav */
 }
 
 form button:hover {
-    background-color: #219150;
+    background-color: #219150; /* Taustavärv hiire kohal */
 }
 
-/* Menu Styles */
+/* Menüüst tulenevad stiilid */
 #menu-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 30px;
-    cursor: pointer;
-    color: #fff;
+    position: absolute; /* Positsioneerib päise suhtes */
+    top: 20px; /* Vahe ülevalt */
+    left: 20px; /* Vahe vasakult */
+    font-size: 30px; /* Fondi suurus */
+    cursor: pointer; /* Klõpsatav element */
+    color: #fff; /* Teksti värv */
 }
 
 nav#menu {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    background-color: #2c3e50;
-    width: 250px;
-    height: 100%;
-    overflow-y: auto;
-    transition: left 0.3s ease;
-    z-index: 1000;
+    position: fixed; /* Menüü fikseeritakse akna külge */
+    top: 0; /* Ülemine asetus */
+    left: -250px; /* Esialgne positsioon aknast väljaspool */
+    background-color: #2c3e50; /* Taustavärv */
+    width: 250px; /* Laius */
+    height: 100%; /* Kõrgus võrdub akna kõrgusega */
+    overflow-y: auto; /* Lubab vertikaalse kerimise */
+    transition: left 0.3s ease; /* Animatsioon menüü avamiseks/sulgemiseks */
+    z-index: 1000; /* Menüü esiletoomine */
 }
 
 nav#menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 60px 0 0 0;
+    list-style: none; /* Eemaldab loendi markerid */
+    padding: 0; /* Sisemised vahed nulliks */
+    margin: 60px 0 0 0; /* Ülemine vahe peitub nupu all */
 }
 
 nav#menu ul li {
-    margin: 20px 0;
+    margin: 20px 0; /* Vahed üksikute üksuste vahel */
 }
 
 nav#menu ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    display: block;
-    padding: 10px 20px;
+    color: #fff; /* Lingiteksti värv */
+    text-decoration: none; /* Eemaldab allajoonimise */
+    font-size: 18px; /* Lingiteksti suurus */
+    display: block; /* Muudab lingi klõpsatava ala suuremaks */
+    padding: 10px 20px; /* Sisemised vahed */
 }
 
 nav#menu ul li a:hover {
-    background-color: #1a252f;
+    background-color: #1a252f; /* Taustavärv hiire kohal */
 }
 
-/* When menu is open */
+/* Kui menüü on avatud */
 nav#menu.open {
-    left: 0;
+    left: 0; /* Menüü nihkub nähtavale */
 }
 
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 500;
-    display: none;
+    position: fixed; /* Fikseeritakse kogu akna ulatuses */
+    top: 0; /* Ülemine asetus */
+    left: 0; /* Vasak asetus */
+    width: 100%; /* Täidab kogu laiuse */
+    height: 100%; /* Täidab kogu kõrguse */
+    background-color: rgba(0,0,0,0.5); /* Läbipaistev must taust */
+    z-index: 500; /* Tase menüü all */
+    display: none; /* Alguses peidetud */
 }
 
 .overlay.active {
-    display: block;
+    display: block; /* Kuvatakse, kui menüü on avatud */
 }
 
-/* Adjust main content when menu is open */
+/* Põhisisu joondamine, kui menüü on avatud */
 body.menu-open main,
 body.menu-open footer {
-    margin-left: 250px;
+    margin-left: 250px; /* Nihutab sisu paremale */
 }
 
 @media screen and (max-width: 768px) {
     body.menu-open main,
     body.menu-open footer {
-        margin-left: 0;
+        margin-left: 0; /* Väiksematel ekraanidel pole nihkumist */
     }
 }
