@@ -1,10 +1,11 @@
+// Klass Car esindab auto mudelit
 class Car {
     constructor(brand, model, year, price, image) {
         this.brand = brand;
         this.model = model;
         this.year = year;
         this.price = price;
-        this.image = image || 'default-car.jpg'; // Default image if none provided
+        this.image = image || 'default-car.jpg'; // Vaikimisi pilt
     }
 
     getInfo() {
@@ -12,9 +13,8 @@ class Car {
     }
 }
 
-// Sample car images (you can replace these with actual image URLs)
+// Eelmääratud pildid autodele
 const sampleImages = {
-
     'Toyota': 'https://kong-proxy-intranet.toyota-europe.com/c1-images/resize/ccis/680x680/zip/ee/product-token/a0ea7f5a-107c-4ead-8934-7ef9e3179066/vehicle/ffe6ebe8-7883-4b68-99cf-ad735ab05575/padding/50,50,50,50/image-quality/70/day-exterior-04_040.png',
     'Ford': 'https://hips.hearstapps.com/hmg-prod/images/2025-ford-explorer-st-110-65ba6d640cbb3.jpg',
     'BMW': 'https://www.bmw.ee/content/dam/bmw/common/all-models/m-series/m8-coupe/2022/navigation/bmw-8series-coupe-modellfinder.png',
@@ -22,32 +22,28 @@ const sampleImages = {
     'Mercedes': 'https://media.ed.edmunds-media.com/mercedes-benz/s-class/2024/oem/2024_mercedes-benz_s-class_sedan_amg-s-63-e-performance_fq_oem_1_1600.jpg',
 };
 
+// Autode markide loend
 let carBrands = ["Toyota", "Ford", "BMW", "Audi", "Mercedes"];
-let carsList = generateCars();
+let carsList = generateCars(); // Kõikide autode nimekiri
 
+// Algse autode nimekirja loomine
 function generateCars() {
     let cars = [];
     for (let i = 0; i < carBrands.length; i++) {
         let brand = carBrands[i];
-        let luxury = (brand === "BMW" || brand === "Audi" || brand === "Mercedes");
-        let price = luxury ? 50000 + (i * 1000) : 20000 + (i * 1000);
-        let image = sampleImages[brand];
+        let luxury = (brand === "BMW" || brand === "Audi" || brand === "Mercedes"); // Luksusbrändide määramine
+        let price = luxury ? 50000 + (i * 1000) : 20000 + (i * 1000); // Hind sõltub brändist
+        let image = sampleImages[brand]; // Pilt võetakse eelmääratud loendist
 
-        let car = new Car(
-            brand,
-            "Model " + (i + 1),
-            2020 + i,
-            price,
-            image
-        );
-        cars.push(car);
+        cars.push(new Car(brand, "Model " + (i + 1), 2020 + i, price, image)); // Auto lisamine loendisse
     }
     return cars;
 }
 
+// Autode kuvamine
 function displayCars(cars) {
     let container = document.getElementById('car-container');
-    container.innerHTML = '';
+    container.innerHTML = ''; // Kustutatakse eelnevad andmed
 
     cars.forEach(function(car) {
         let carDiv = document.createElement('div');
@@ -75,14 +71,14 @@ function displayCars(cars) {
     });
 }
 
-displayCars(carsList);
+displayCars(carsList); // Esialgse nimekirja kuvamine
 
-// Update menu items dynamically
+// Menüüs olevate markide uuendamine
 function updateMenu() {
     let brandList = document.getElementById('brand-list');
-    brandList.innerHTML = '';
+    brandList.innerHTML = ''; // Kustutatakse vanad elemendid
 
-    // Add "Kõik Autod" option
+    // Lisatakse valik "Kõik Autod"
     let allCarsItem = document.createElement('li');
     let allCarsLink = document.createElement('a');
     allCarsLink.href = '#';
@@ -92,9 +88,8 @@ function updateMenu() {
     allCarsItem.appendChild(allCarsLink);
     brandList.appendChild(allCarsItem);
 
-    // Get unique brands from carsList
+    // Unikaalsete brändide nimekiri
     let brands = [...new Set(carsList.map(car => car.brand))];
-
     brands.forEach(function(brand) {
         let listItem = document.createElement('li');
         let link = document.createElement('a');
@@ -107,9 +102,9 @@ function updateMenu() {
     });
 }
 
-updateMenu();
+updateMenu(); // Menüü algne kuvamine
 
-// Menu toggle functionality
+// Külgmenüü funktsioonid
 let menuButton = document.getElementById('menu-button');
 let menu = document.getElementById('menu');
 let overlay = document.createElement('div');
@@ -138,50 +133,47 @@ menuButton.addEventListener('click', function() {
 
 overlay.addEventListener('click', closeMenu);
 
-// Filter cars by brand when menu item is clicked
+// Autode filtreerimine brändi järgi
 document.getElementById('brand-list').addEventListener('click', function(event) {
     if (event.target.tagName === 'A') {
         event.preventDefault();
         let selectedBrand = event.target.getAttribute('data-brand');
 
         if (selectedBrand === 'all') {
-            // Show all cars
-            displayCars(carsList);
+            displayCars(carsList); // Kõik autode kuvamine
         } else {
-            // Filter cars
-            let filteredCars = carsList.filter(car => car.brand === selectedBrand);
+            let filteredCars = carsList.filter(car => car.brand === selectedBrand); // Filtreerimine brändi järgi
             displayCars(filteredCars);
         }
 
-        closeMenu();
+        closeMenu(); // Menüü sulgemine
     }
 });
 
-// Function to add a new car
+// Uue auto lisamine vormi kaudu
 function addCar(event) {
-    event.preventDefault();
+    event.preventDefault(); // Takistab lehe uuesti laadimist
 
+    // Andmete kogumine vormist
     let brandInput = document.getElementById('brand').value;
     let modelInput = document.getElementById('model').value;
     let yearInput = parseInt(document.getElementById('year').value);
     let priceInput = parseFloat(document.getElementById('price').value);
     let imageInput = document.getElementById('image').value;
 
+    // Vigade kontroll
     if (!brandInput || !modelInput || isNaN(yearInput) || isNaN(priceInput)) {
         alert("Palun täitke kõik väljad õigesti.");
         return;
     }
 
-    let newCar = new Car(brandInput, modelInput, yearInput, priceInput, imageInput);
+    let newCar = new Car(brandInput, modelInput, yearInput, priceInput, imageInput); // Uue auto loomine
+    carsList.push(newCar); // Auto lisamine nimekirja
 
-    carsList.push(newCar);
+    displayCars(carsList); // Uuendatud nimekirja kuvamine
+    updateMenu(); // Menüü uuendamine
 
-    displayCars(carsList);
-
-    // Update the menu with new brand if necessary
-    updateMenu();
-
-    document.getElementById('add-car-form').reset();
+    document.getElementById('add-car-form').reset(); // Vormi tühjendamine
 }
 
-document.getElementById('add-car-form').addEventListener('submit', addCar);
+document.getElementById('add-car-form').addEventListener('submit', addCar); // Lisamise vormi töötleja
